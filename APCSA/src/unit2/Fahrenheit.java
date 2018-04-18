@@ -4,11 +4,18 @@ public class Fahrenheit {
 	private double fahrenheit;
 
 	public static void main(String[] args) {
+		
+		
 		Fahrenheit f = new Fahrenheit();
 		f.setFahrenheit(100);
 		f.print();
 	}
-
+	public static int dog(int x){
+		if(x<1)
+		return 1;
+		else
+		return x-dog(x-3);
+		}
 	public void setFahrenheit(double fahren) {
 		fahrenheit = fahren;
 	}

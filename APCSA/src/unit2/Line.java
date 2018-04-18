@@ -14,7 +14,7 @@ public class Line
 
 	}
 	public static void main(String[] args) {
-		Line l = new Line(1,1,10,15);
+		Line l = new Line(4,5,5,3);
 		System.out.println(l.calculateSlope());
 	}
 

@@ -17,7 +17,7 @@ public class Lab05d
 		System.out.print("Enter a letter :: ");
 		char letter2 = keyboard.next().charAt(0);
 		CharacterAnalyzer test2 = new CharacterAnalyzer(letter2);
-		test2.setChar(letter2);
+		test2.setChar(letter2);  
 		System.out.println(test2);
 		
 		System.out.print("Enter a letter :: ");
