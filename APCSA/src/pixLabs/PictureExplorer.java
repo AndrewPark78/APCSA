@@ -226,9 +226,9 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
   private void setUpNextAndPreviousButtons()
   {
     // create the image icons for the buttons
-    Icon prevIcon = new ImageIcon(DigitalPicture.class.getResource("/images/leftArrow.gif"), 
+    Icon prevIcon = new ImageIcon(DigitalPicture.class.getResource("\\images\\leftArrow.gif"), 
                                   "previous index");
-    Icon nextIcon = new ImageIcon(DigitalPicture.class.getResource("/images/rightArrow.gif"), 
+    Icon nextIcon = new ImageIcon(DigitalPicture.class.getResource("\\images\\rightArrow.gif"), 
                                   "next index");
 
     // create the arrow buttons
@@ -787,13 +787,19 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
       return colValue;
     }
     
-    public Component getLastComponent(Container focusCycleRoot) {
+    public Component getLastComponentf(Container focusCycleRoot) {
       return rowValue;
     }
     
     public Component getFirstComponent(Container focusCycleRoot) {
       return colValue;
     }
+
+	@Override
+	public Component getLastComponent(Container aContainer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
   }
   
   /**
@@ -801,7 +807,7 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
    */
   public static void main( String args[])
   {
-    Picture pix = new Picture("robot.jpg");
+    Picture pix = new Picture("flower1.jpg");
     pix.explore();
   }
   
