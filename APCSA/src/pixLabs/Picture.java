@@ -155,18 +155,28 @@ public class Picture extends SimplePicture {
 		Pixel[][] pixels = this.getPixels2D();
 		Pixel topPixel = null;
 		Pixel botPixel = null;
-		int hight = pixels.length;
+		int height = pixels.length;
 		for (int col = 0; col < pixels[0].length; col++) {
-			for (int row = 0; row < hight / 2; row++) {
+			for (int row = 0; row < height / 2; row++) {
 				topPixel = pixels[row][col];
-				botPixel = pixels[hight-1-row][col];
+				botPixel = pixels[height-1-row][col];
 				topPixel.setColor(botPixel.getColor());
 			}
 		}
 	}
 	
 	public void mirrorDiagnol(){
-		
+		int smaller = Integer.min(getWidth(), getHeight());
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel topPixel = null;
+		Pixel botPixel = null;
+		for (int col = 0; col < smaller; col++) {
+			for (int row = 0; row < smaller; row++) {
+				topPixel = pixels[row][col];
+				botPixel = pixels[smaller - row][smaller -col];
+				topPixel.setColor(botPixel.getColor());
+			}
+		}
 	}
 	/** Mirror just part of a picture of a temple */
 	public void mirrorTemple() {
@@ -307,8 +317,11 @@ public class Picture extends SimplePicture {
 	public void edgeDetection(int edgeDist) {
 		Pixel leftPixel = null;
 		Pixel rightPixel = null;
+		Pixel top = null;
+		Pixel bot = null;
 		Pixel[][] pixels = this.getPixels2D();
 		Color rightColor = null;
+		Color botColor = null;
 		for (int row = 0; row < pixels.length; row++) {
 			for (int col = 0; col < pixels[0].length - 1; col++) {
 				leftPixel = pixels[row][col];
@@ -318,6 +331,13 @@ public class Picture extends SimplePicture {
 					leftPixel.setColor(Color.BLACK);
 				else
 					leftPixel.setColor(Color.WHITE);
+				top = pixels[row][col];
+				bot = pixels[row+1][col];
+				botColor = bot.getColor();
+				if (top.colorDistance(botColor) > edgeDist)
+					top.setColor(Color.BLACK);
+				else
+					top.setColor(Color.WHITE);
 			}
 		}
 	}
@@ -364,7 +384,7 @@ public class Picture extends SimplePicture {
 	public static void main(String[] args) {
 		Picture beach = new Picture("water.jpg");
 		beach.explore();
-		beach.fixUnderwater();
+		beach.edgeDetection(2);
 		beach.explore();
 	}
 
