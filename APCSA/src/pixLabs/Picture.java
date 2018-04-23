@@ -161,11 +161,16 @@ public class Picture extends SimplePicture {
 		for (int col = 0; col < pixels[0].length; col++) {
 			for (int row = 0; row < height / 2; row++) {
 				topPixel = pixels[row][col];
+<<<<<<< HEAD
 				botPixel = pixels[height - 1 - row][col];
+=======
+				botPixel = pixels[height-1-row][col];
+>>>>>>> branch 'master' of https://github.com/AndrewPark78/APCSA.git
 				topPixel.setColor(botPixel.getColor());
 			}
 		}
 	}
+<<<<<<< HEAD
 
 	public void mirrorDiagnol() {
 		int smaller = Integer.min(getWidth(), getHeight());
@@ -176,6 +181,18 @@ public class Picture extends SimplePicture {
 			for (int row = 0; row < smaller; row++) {
 				topPixel = pixels[row][col];
 				botPixel = pixels[col][row];
+=======
+	
+	public void mirrorDiagnol(){
+		int smaller = Integer.min(getWidth(), getHeight());
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel topPixel = null;
+		Pixel botPixel = null;
+		for (int col = 0; col < smaller; col++) {
+			for (int row = 0; row < smaller; row++) {
+				topPixel = pixels[row][col];
+				botPixel = pixels[smaller - row][smaller -col];
+>>>>>>> branch 'master' of https://github.com/AndrewPark78/APCSA.git
 				topPixel.setColor(botPixel.getColor());
 			}
 		}
@@ -341,7 +358,11 @@ public class Picture extends SimplePicture {
 				else
 					leftPixel.setColor(Color.WHITE);
 				top = pixels[row][col];
+<<<<<<< HEAD
 				bot = pixels[row + 1][col];
+=======
+				bot = pixels[row+1][col];
+>>>>>>> branch 'master' of https://github.com/AndrewPark78/APCSA.git
 				botColor = bot.getColor();
 				if (top.colorDistance(botColor) > edgeDist)
 					top.setColor(Color.BLACK);
@@ -430,10 +451,14 @@ public class Picture extends SimplePicture {
 	public static void main(String[] args) {
 		Picture beach = new Picture("blueMotorcycle.jpg");
 		beach.explore();
+<<<<<<< HEAD
 		// System.out.println("One");
 			beach.blur();
 			beach.blur();
 			beach.blur();
+=======
+		beach.edgeDetection(2);
+>>>>>>> branch 'master' of https://github.com/AndrewPark78/APCSA.git
 		beach.explore();
 		System.out.println("complete");
 		// for (int i = 0; i < 100; i++) {
