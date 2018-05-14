@@ -9,6 +9,7 @@ public class Alien extends MovingThing
 {
 	private int speed;
 	private Image image;
+	int health = 2;
 
 	public Alien()
 	{
@@ -26,7 +27,7 @@ public class Alien extends MovingThing
 		speed=s;
 		try
 		{
-			image = ImageIO.read(new File("alien.jpg"));
+			image = ImageIO.read(new File(System.getProperty("user.dir") + "/src/starshipLab/alien.jpg"));
 		}
 		catch(Exception e)
 		{
@@ -43,7 +44,12 @@ public class Alien extends MovingThing
 	{
 	   return speed;
 	}
-
+	public void setHealth(int h){
+		health =h;
+	}
+	public int getHealth(){
+		return health;
+	}
 	public void draw( Graphics window )
 	{
    	window.drawImage(image,getX(),getY(),80,80,null);
