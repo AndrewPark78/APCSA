@@ -138,6 +138,7 @@ public class Picture extends SimplePicture {
 			}
 		}
 	}
+
 	public void mirrorHorizontal() {
 		Pixel[][] pixels = this.getPixels2D();
 		Pixel topPixel = null;
@@ -146,11 +147,12 @@ public class Picture extends SimplePicture {
 		for (int col = 0; col < pixels[0].length; col++) {
 			for (int row = 0; row < hight / 2; row++) {
 				topPixel = pixels[row][col];
-				botPixel = pixels[hight-1-row][col];
+				botPixel = pixels[hight - 1 - row][col];
 				botPixel.setColor(topPixel.getColor());
 			}
 		}
 	}
+
 	public void mirrorBotToTop() {
 		Pixel[][] pixels = this.getPixels2D();
 		Pixel topPixel = null;
@@ -159,11 +161,27 @@ public class Picture extends SimplePicture {
 		for (int col = 0; col < pixels[0].length; col++) {
 			for (int row = 0; row < height / 2; row++) {
 				topPixel = pixels[row][col];
+<<<<<<< HEAD
+				botPixel = pixels[height - 1 - row][col];
+=======
 				botPixel = pixels[height-1-row][col];
+>>>>>>> branch 'master' of https://github.com/AndrewPark78/APCSA.git
 				topPixel.setColor(botPixel.getColor());
 			}
 		}
 	}
+<<<<<<< HEAD
+
+	public void mirrorDiagnol() {
+		int smaller = Integer.min(getWidth(), getHeight());
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel topPixel = null;
+		Pixel botPixel = null;
+		for (int col = 0; col < smaller; col++) {
+			for (int row = 0; row < smaller; row++) {
+				topPixel = pixels[row][col];
+				botPixel = pixels[col][row];
+=======
 	
 	public void mirrorDiagnol(){
 		int smaller = Integer.min(getWidth(), getHeight());
@@ -174,10 +192,12 @@ public class Picture extends SimplePicture {
 			for (int row = 0; row < smaller; row++) {
 				topPixel = pixels[row][col];
 				botPixel = pixels[smaller - row][smaller -col];
+>>>>>>> branch 'master' of https://github.com/AndrewPark78/APCSA.git
 				topPixel.setColor(botPixel.getColor());
 			}
 		}
 	}
+
 	/** Mirror just part of a picture of a temple */
 	public void mirrorTemple() {
 		int mirrorPoint = 276;
@@ -199,6 +219,7 @@ public class Picture extends SimplePicture {
 		}
 		System.out.println(count);
 	}
+
 	public void mirrorSnowman() {
 		int mirrorPoint = 206;
 		Pixel leftPixel = null;
@@ -219,6 +240,7 @@ public class Picture extends SimplePicture {
 		}
 		System.out.println(count);
 	}
+
 	public void mirrorSeagull() {
 		int mirrorPoint = 347;
 		Pixel leftPixel = null;
@@ -239,6 +261,7 @@ public class Picture extends SimplePicture {
 		}
 		System.out.println(count);
 	}
+
 	/**
 	 * copy from the passed fromPic to the specified startRow and startCol in
 	 * the current picture
@@ -265,13 +288,13 @@ public class Picture extends SimplePicture {
 			}
 		}
 	}
+
 	public void copyPart(Picture fromPic, int startRow, int startCol, int endRow, int endCol) {
 		Pixel fromPixel = null;
 		Pixel toPixel = null;
 		Pixel[][] toPixels = this.getPixels2D();
 		Pixel[][] fromPixels = fromPic.getPixels2D();
-		for (int fromRow = 0, toRow = startRow; fromRow < fromPixels.length
-				&& toRow < endRow; fromRow++, toRow++) {
+		for (int fromRow = 0, toRow = startRow; fromRow < fromPixels.length && toRow < endRow; fromRow++, toRow++) {
 			for (int fromCol = 0, toCol = startCol; fromCol < fromPixels[0].length
 					&& toCol < endCol; fromCol++, toCol++) {
 				fromPixel = fromPixels[fromRow][fromCol];
@@ -280,6 +303,7 @@ public class Picture extends SimplePicture {
 			}
 		}
 	}
+
 	/** Method to create a collage of several pictures */
 	public void createCollage() {
 		Picture flower1 = new Picture("flower1.jpg");
@@ -293,21 +317,23 @@ public class Picture extends SimplePicture {
 		this.copy(flower1, 400, 0);
 		this.copy(flower2, 500, 0);
 		this.mirrorVertical();
-		//this.write("collage.jpg");
+		// this.write("collage.jpg");
 	}
-	public void myCollage(){
+
+	public void myCollage() {
 		Picture flower1 = new Picture("whiteFLower.jpg");
-		//Picture flower2 = new Picture("flower2.jpg");
-		this.copyPart(flower1, 190, 164,317,304);
-		//this.copy(flower2, 317, 0);
-		//this.copy(flower1, 200, 0);
+		// Picture flower2 = new Picture("flower2.jpg");
+		this.copyPart(flower1, 190, 164, 317, 304);
+		// this.copy(flower2, 317, 0);
+		// this.copy(flower1, 200, 0);
 		Picture flowerNoBlue = new Picture(flower1);
 		flowerNoBlue.zeroBlue();
-		this.copyPart(flowerNoBlue, 190, 164,317,304);
+		this.copyPart(flowerNoBlue, 190, 164, 317, 304);
 		this.mirrorVertical();
-		//this.write("collage.jpg");
-		
+		// this.write("collage.jpg");
+
 	}
+
 	/**
 	 * Method to show large changes in color
 	 * 
@@ -332,7 +358,11 @@ public class Picture extends SimplePicture {
 				else
 					leftPixel.setColor(Color.WHITE);
 				top = pixels[row][col];
+<<<<<<< HEAD
+				bot = pixels[row + 1][col];
+=======
 				bot = pixels[row+1][col];
+>>>>>>> branch 'master' of https://github.com/AndrewPark78/APCSA.git
 				botColor = bot.getColor();
 				if (top.colorDistance(botColor) > edgeDist)
 					top.setColor(Color.BLACK);
@@ -357,23 +387,60 @@ public class Picture extends SimplePicture {
 		Pixel[][] pixels = this.getPixels2D();
 		for (Pixel[] rowArray : pixels) {
 			for (Pixel pixelObj : rowArray) {
-				pixelObj.setRed((int)Math.floor(pixelObj.getAverage()));
-				pixelObj.setBlue((int)Math.floor(pixelObj.getAverage()));
-				pixelObj.setGreen((int)Math.floor(pixelObj.getAverage()));
+				pixelObj.setRed((int) Math.floor(pixelObj.getAverage()));
+				pixelObj.setBlue((int) Math.floor(pixelObj.getAverage()));
+				pixelObj.setGreen((int) Math.floor(pixelObj.getAverage()));
 			}
 		}
 	}
-	public void fixUnderwater(){
+
+	public void fixUnderwater() {
 		Pixel[][] pixels = this.getPixels2D();
 		int r = 0;
 		int g = 0;
 		int b = 0;
 		for (Pixel[] rowArray : pixels) {
 			for (Pixel pixelObj : rowArray) {
-				g=pixelObj.getGreen();
+				g = pixelObj.getGreen();
 				b = pixelObj.getBlue();
-				pixelObj.setBlue(b-100);
-				pixelObj.setGreen(g-100);
+				pixelObj.setBlue(b - 100);
+				pixelObj.setGreen(g - 100);
+			}
+		}
+	}
+
+	public void blur() {
+		Pixel pixel = null;
+		Pixel curPixel = null;
+		int redValue = 0;
+		int greenValue = 0;
+		int blueValue = 0;
+		int count = 0;
+
+		for (int x = 0; x < this.getWidth(); x++) {
+			for (int y = 0; y < this.getHeight(); y++) {
+
+				pixel = this.getPixel(x, y);
+
+				count = 0;
+				redValue = 0;
+				greenValue = 0;
+				blueValue = 0;
+
+				for (int xChange = x - 1; xChange <= x + 1; xChange++) {
+					for (int yChange = y - 1; yChange <= y + 1; yChange++) {
+
+						if (xChange >= 0 && xChange < this.getWidth() && yChange >= 0 && yChange < this.getHeight()) {
+							curPixel = this.getPixel(xChange, yChange);
+							redValue = redValue + curPixel.getRed();
+							greenValue = greenValue + curPixel.getGreen();
+							blueValue = blueValue + curPixel.getBlue();
+							count = count + 1;
+						}
+					}
+				}
+				Color newColor = new Color(redValue / count, greenValue / count, blueValue / count);
+				pixel.setColor(newColor);
 			}
 		}
 	}
@@ -382,10 +449,23 @@ public class Picture extends SimplePicture {
 	 * Main method for testing - each class in Java can have a main method
 	 */
 	public static void main(String[] args) {
-		Picture beach = new Picture("water.jpg");
+		Picture beach = new Picture("blueMotorcycle.jpg");
 		beach.explore();
+<<<<<<< HEAD
+		// System.out.println("One");
+			beach.blur();
+			beach.blur();
+			beach.blur();
+=======
 		beach.edgeDetection(2);
+>>>>>>> branch 'master' of https://github.com/AndrewPark78/APCSA.git
 		beach.explore();
+		System.out.println("complete");
+		// for (int i = 0; i < 100; i++) {
+		// beach.blur();
+		// }
+		//
+		// beach.explore();
 	}
 
 } // this } is the end of class Picture, put all new methods before this

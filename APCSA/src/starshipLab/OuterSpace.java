@@ -68,6 +68,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable {
 		graphToBack.setColor(Color.BLUE);
 		graphToBack.drawString("StarFighter ", 25, 50);
 		graphToBack.setColor(Color.BLACK);
+
 		graphToBack.fillRect(0, 0, 800, 600);
 		if (gameStateAlive) {
 			graphToBack.setColor(Color.lightGray);
@@ -102,6 +103,32 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable {
 					aliens.add(new Alien(100, 200, 3));
 					System.out.println(count);
 				} else if (count < 6) {
+
+		graphToBack.fillRect(0,0,800,600);
+		
+	//	ship.draw(graphToBack);
+		if(keys[0] == true)
+		{
+			ship.move("LEFT");
+		}
+
+		//add code to move stuff
+		if(keys[0] == true){
+			ship.move("LEFT");
+		}
+		if(keys[1] == true){
+			ship.move("RIGHT");
+		}
+		if(keys[2] == true){
+			ship.move("UP");
+		}
+		if(keys[3] == true){
+			ship.move("DOWN");
+		}
+		if(keys[4] == true){
+			//ship.;
+		}
+
 
 					if (aliens.get(count - 1).getX() + (150 * count) < 650) {
 						System.out.println("Adding 2nd Row");
